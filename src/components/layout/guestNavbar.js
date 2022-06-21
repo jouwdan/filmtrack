@@ -10,7 +10,7 @@ function guestNavbar() {
                 <Link to="/" className="btn btn-ghost mr-2 hidden lg:flex">
                     Home
                 </Link>
-                <Link to="/" className="btn btn-ghost mr-2 hidden lg:flex">
+                <Link to="/about" className="btn btn-ghost mr-2 hidden lg:flex">
                     About
                 </Link>
                 <a class="btn mr-2">Login</a>
@@ -21,7 +21,7 @@ function guestNavbar() {
                     </label>
                     <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><Link to="/">Home</Link></li>
-                        <li><Link to="/">About</Link></li>
+                        <li><Link to="/about">About</Link></li>
                     </ul>
                 </div>
             </div>
