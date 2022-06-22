@@ -1,10 +1,11 @@
 import { Link, NavLink } from 'react-router-dom';
+import { Icon } from '@iconify/react';
 
 function guestNavbar() {
     return (
         <nav className="navbar bg-base-200 text-base-content">
             <div className="navbar-start">
-                <Link to="/" className="btn btn-ghost normal-case text-xl">Filmtrack</Link>
+                <Link to="/" className="btn btn-ghost normal-case text-xl"><Icon icon="heroicons-solid:film" /> &nbsp; Filmtrack</Link>
             </div>
             <div className="navbar-middle">
                 <NavLink to="/" className={({ isActive }) => (isActive ? 'btn btn-ghost btn-active mr-2 hidden lg:flex' : 'btn btn-ghost mr-2 hidden lg:flex')}>
