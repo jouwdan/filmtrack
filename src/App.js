@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-d
 import Navbar from './components/layout/guestNavbar';
 import Home from './pages/Home';
 import About from './pages/About';
+import Movie from './pages/Movie';
 
 function App() {
  return (
@@ -12,6 +13,7 @@ function App() {
      <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
+      <Route path="/movies/:id" element={<Movie />} />
       <Route path="*" element={<Navigate to="/" replace />} />
      </Routes>
     </main>

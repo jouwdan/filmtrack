@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 
 export default function movieCard(props) {
@@ -13,10 +14,12 @@ export default function movieCard(props) {
         } alt="Movie Poster" class="pt-10" /></figure>
             <div class="card-body w-72 content-center">
                 <h2 class="card-title">{movie.title}</h2>
-                <div><span class="badge badge-success"><Icon icon="heroicons-solid:clock" /> {movie.release_date}</span> &nbsp;
+                <div><span class="badge badge-success"><Icon icon="heroicons-solid:calendar" /> &nbsp; {movie.release_date}</span> &nbsp;
                 <span class="badge badge-warning"><Icon icon="heroicons-solid:star" /> {movie.vote_average}</span></div>
                 <div class="card-actions">
-                    <button class="btn btn-primary">More Info</button>
+                    <Link to={`/movies/${movie.id}`}>
+                        <button class="btn btn-primary">More Info</button>
+                    </Link>
                 </div>
             </div>
         </div>
