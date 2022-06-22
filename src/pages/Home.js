@@ -29,7 +29,7 @@ const Home = (props) => {
 </div>
     <div class="card bg-base-200 m-4">
     <h2 class="text-3xl m-6">Popular Movies</h2>
-    <div className="flex flex-wrap justify-center w-full pb-4">
+    <div className="flex flex-wrap items-stretch justify-center w-full pb-4">
    <MovieList movies={movies}></MovieList>
    </div>
   </div>
