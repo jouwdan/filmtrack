@@ -16,15 +16,15 @@ function Login() {
       if (user) navigate("/dashboard");
     }, [user, loading]);
     return (
-        <div class="flex pt-6">
-        <div class="card shadow-2xl bg-base-200 flex-1 justify-center p-12">
-            <div class="card-header">
+        <div className="flex pt-6">
+        <div className="card shadow-2xl bg-base-200 flex-1 justify-center p-12">
+            <div className="card-header">
                 <h2 className="text-3xl">Log In to Filmtrack</h2>
             </div>
-        <div class="card-body">
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text">Email</span>
+        <div className="card-body">
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Email</span>
           </label>
           <input
             type="text"
@@ -34,9 +34,9 @@ function Login() {
             placeholder="E-mail Address"
           />
           </div>
-          <div class="form-control">
-          <label class="label">
-            <span class="label-text">Password</span>
+          <div className="form-control">
+          <label className="label">
+            <span className="label-text">Password</span>
           </label>
           <input
             type="password"
