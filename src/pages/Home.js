@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from "react";
 import MovieList from "../components/lists/movieList";
+import { getMovies } from "../api/tmdb-api";
 
 const Home = (props) => {
     const [movies, setMovies] = useState([]);
     useEffect(() => {
-        fetch(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&include_adult=false&page=1`
-        )
-          .then((res) => res.json())
-          .then((json) => {
-            return json.results;
-          })
-          .then((movies) => {
-            setMovies(movies);
-          });
-          // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, []);
+      getMovies().then(movies => {
+        setMovies(movies);
+      });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
  return (
     <div>
     <div class="card justify-center h-96 bg-base-200 m-4">
