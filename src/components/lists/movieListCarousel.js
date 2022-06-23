@@ -3,7 +3,7 @@ import Movie from "../cards/movieCard";
 
 const MovieListCarousel = (props) => {
   let movieCards = props.movies?.map((m) => (
-    <div class="carousel-item">
+    <div className="carousel-item">
       <Movie key={m.id} movie={m} />
     </div>
   ));
