@@ -71,7 +71,7 @@ function Register() {
         Register
       </button>
       <div className="justify-end">
-        Already have an account? <Link to="/register" className="link">Login now</Link>.
+        Already have an account? <Link to="/login" className="link">Login now</Link>.
       </div>
     </div>
   </div>

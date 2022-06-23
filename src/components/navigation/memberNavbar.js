@@ -34,6 +34,7 @@ function memberNavbar() {
                     </label>
                     <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'btn btn-ghost btn-active mb-2' : 'btn btn-ghost mb-2')}>Dashboard</NavLink></li>
+                        <li><NavLink to="/discover" className={({ isActive }) => (isActive ? 'btn btn-ghost btn-active mb-2' : 'btn btn-ghost mb-2')}>Discover</NavLink></li>
                     </ul>
                 </div>
             </div>

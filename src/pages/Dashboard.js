@@ -30,9 +30,9 @@ function Dashboard() {
   }, [user, loading]);
   return (
     <>
-    <div class="card justify-center h-60 bg-base-200 m-4">
-    <div class="hero-content text-center mx-auto">
-        <h1 class="text-5xl font-bold">Welcome, {name}</h1>
+    <div className="card justify-center h-60 bg-base-200 m-4">
+    <div className="hero-content text-center mx-auto">
+        <h1 className="text-5xl font-bold">Welcome, {name}</h1>
     </div>
   </div>
   <PageTemplate

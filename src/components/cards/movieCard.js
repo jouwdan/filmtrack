@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { MoviesContext } from "../../contexts/moviesContext";
 import { Icon } from '@iconify/react';
 
 export default function movieCard(props) {
