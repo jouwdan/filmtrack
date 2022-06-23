@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import MovieList from "../components/lists/movieList";
+import MovieListCarousel from "../components/lists/movieListCarousel";
 import { getMovies } from "../api/tmdb-api";
 
 const Home = (props) => {
@@ -24,7 +24,9 @@ const Home = (props) => {
     <div class="card bg-base-200 m-4">
     <h2 class="text-3xl m-6">Popular Movies</h2>
     <div className="flex flex-wrap items-stretch justify-center w-full pb-4">
-   <MovieList movies={movies}></MovieList>
+    <div class="carousel carousel-center p-4 space-x-4 rounded-box">
+   <MovieListCarousel movies={movies}></MovieListCarousel>
+   </div>
    </div>
   </div>
   </div>
