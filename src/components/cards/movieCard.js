@@ -6,7 +6,7 @@ export default function movieCard(props) {
     const movie = props.movie;
 
     return (
-        <div className="card bg-base-300 shadow-xl flex-1">
+        <div className="card bg-base-300 shadow-xl m-1">
             <figure><img src={
           movie.poster_path
             ? `https://image.tmdb.org/t/p/w200/${movie.poster_path}`

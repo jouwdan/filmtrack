@@ -20,20 +20,19 @@ function Dashboard() {
   };
   useEffect(() => {
     if (loading) return;
-    if (!user) return navigate("/");
+    if (!user) return navigate("/login");
     fetchUserName();
   }, [user, loading]);
   return (
-    <div className="dashboard">
-       <div className="dashboard__container">
-        Logged in as
-         <div>{name}</div>
-         <div>{user?.email}</div>
-         <button className="dashboard__btn" onClick={logout}>
-          Logout
-         </button>
-       </div>
-     </div>
+    <>
+    <div class="card justify-center h-60 bg-base-200 m-4">
+    <div class="hero-content text-center mx-auto">
+      <div class="max-w-lg">
+        <h1 class="text-5xl font-bold">Welcome, {name}</h1>
+      </div>
+    </div>
+  </div>
+    </>
   );
 }
 export default Dashboard;

@@ -5,6 +5,7 @@ import MemberNavbar from './components/layout/memberNavbar';
 import Home from './pages/Home';
 import About from './pages/About';
 import Movie from './pages/Movie';
+import Discover from './pages/Discover';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Reset from './pages/Reset';
@@ -22,6 +23,7 @@ const [user, loading, error] = useAuthState(auth);
      <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
+      <Route path="/discover" element={<Discover />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/reset" element={<Reset />} />

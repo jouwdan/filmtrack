@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, NavLink } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import { logout } from '../../firebase';
+import { logout } from '../../firebase';;
 
 function memberNavbar() {
 
@@ -14,11 +14,14 @@ function memberNavbar() {
                 <NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'btn btn-ghost btn-active mr-2 hidden lg:flex' : 'btn btn-ghost mr-2 hidden lg:flex')}>
                     Dashboard
                 </NavLink>
+                <NavLink to="/discover" className={({ isActive }) => (isActive ? 'btn btn-ghost btn-active mr-2 hidden lg:flex' : 'btn btn-ghost mr-2 hidden lg:flex')}>
+                    Discover
+                </NavLink>
                 </div>
             <div className="navbar-end">
                 <div className="dropdown dropdown-end">
-                    <label tabIndex="0" className="btn btn-ghost">
-                    <Icon icon="heroicons-solid:user" />
+                    <label tabIndex="0" className="btn btn-circle">
+                    <Icon icon="heroicons-solid:user" width="25" />
                     </label>
                     <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                     <li><a className="btn btn-ghost">My Account</a></li>

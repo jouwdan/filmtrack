@@ -11,7 +11,7 @@ const Home = (props) => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
  return (
-    <div>
+    <>
     <div class="card justify-center h-96 bg-base-200 m-4">
   <div class="hero-content text-center mx-auto">
     <div class="max-w-lg">
@@ -29,7 +29,7 @@ const Home = (props) => {
    </div>
    </div>
   </div>
-  </div>
+  </>
  );
 }
 
