@@ -19,7 +19,7 @@ const Home = (props) => {
  return (
     <div>
     <div class="card justify-center h-96 bg-base-200 m-4">
-  <div class="hero-content text-center">
+  <div class="hero-content text-center mx-auto">
     <div class="max-w-lg">
       <h1 class="text-5xl font-bold">Welcome to Filmtrack</h1>
       <p class="py-6">Filmtrack is an app to keep up with the latest movies.</p>
