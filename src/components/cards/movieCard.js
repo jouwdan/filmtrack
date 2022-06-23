@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useContext } from "react";
 import { Link } from 'react-router-dom';
 import { MoviesContext } from "../../contexts/moviesContext";
 import { Icon } from '@iconify/react';
 
-export default function movieCard(props) {
+export default function MovieCard(props) {
     const movie = props.movie;
-    const handleAddToFavourite = (e) => {
+    const { favourites, addToFavourites } = useContext(MoviesContext);
+    if (favourites.find((id) => id === movie.id)) {
+        movie.favourite = true;
+      } else {
+        movie.favourite = false
+      }
+    
+      const handleAddToFavourite = (e) => {
         e.preventDefault();
-        props.selectFavourite(movie.id);
+        addToFavourites(movie);
       };
     return (
         <div className="card bg-base-300 shadow-xl m-1">
