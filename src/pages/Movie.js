@@ -1,26 +1,13 @@
 import React, {useState, useEffect}  from "react";
 import { useParams } from "react-router-dom";
 import { Icon } from '@iconify/react';
+import useMovie from "../hooks/useMovie";
 import { getMovie, getMovieImages } from "../api/tmdb-api";
 
 const Movie = (props) => {
 
   const { id } = useParams();
-  const [movie, setMovie] = useState(null);
-  const [images, setImages] = useState([]);
-
-  useEffect(() => {
-    getMovie(id).then((movie) => {
-      setMovie(movie);
-    });
-  }, [id]);
-
-  useEffect(() => {
-    getMovieImages(id).then((images) => {
-      setImages(images);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const [movie] = useMovie(id);
 
  return (
     <>
