@@ -10,8 +10,10 @@ const RemoveFromFavouritesIcon = ({ movie }) => {
     context.removeFromFavourites(movie);
   };
   return (
+  <div class="tooltip" data-tip="remove favourite">
     <button className="btn btn-error" onClick={handleRemoveFromFavourites}><Icon icon="heroicons-solid:heart" /></button>
-  );
+    </div>
+);
 };
 
 export default RemoveFromFavouritesIcon;
