@@ -8,6 +8,7 @@ import { MoviesContext } from "../contexts/moviesContext";
 import PageTemplate from '../components/templates/movieListTemplate';
 import { getMovie } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
+import RemoveFromFavourites from "../components/cards/icons/removeFromFavourites";
 
 function Dashboard() {
   const [user, loading, error] = useAuthState(auth);
@@ -61,7 +62,13 @@ function Dashboard() {
   <PageTemplate
     title='Favourite Movies'
     movies={movies}
-    selectFavourite={toDo}
+    action={(movie) => {
+      return (
+        <>
+          <RemoveFromFavourites movie={movie} />
+        </>
+      );
+    }}
   />
     </>
   );
