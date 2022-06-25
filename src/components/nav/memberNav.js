@@ -1,9 +1,9 @@
 import React from "react";
 import { Link, NavLink } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import { logout } from '../../firebase';;
+import { auth } from "../../firebase";
 
-function memberNavbar() {
+function memberNav() {
 
     return (
         <nav className="navbar bg-base-200 text-base-content">
@@ -25,7 +25,7 @@ function memberNavbar() {
                     </label>
                     <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                     <li><a className="btn btn-ghost">My Account</a></li>
-                    <li><a className="btn btn-ghost" onClick={logout}>Log Out</a></li>
+                    <li><a className="btn btn-ghost" onClick={() => auth.signOut()}>Log Out</a></li>
                     </ul>
                 </div>
                 <div className="dropdown dropdown-end">
@@ -42,4 +42,4 @@ function memberNavbar() {
     );
 }
 
-export default memberNavbar;
+export default memberNav;

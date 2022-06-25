@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 
-function guestNavbar() {
+function guestNav() {
 
     return (
         <nav className="navbar bg-base-200 text-base-content">
@@ -38,4 +38,4 @@ function guestNavbar() {
     );
 }
 
-export default guestNavbar;
+export default guestNav;
