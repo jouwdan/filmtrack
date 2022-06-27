@@ -1,21 +1,10 @@
 import React, { useContext } from "react";
 import { Link } from 'react-router-dom';
-import { MoviesContext } from "../../contexts/moviesContext";
+import { MovieContext } from "../../Context";
 import { Icon } from '@iconify/react';
 
-export default function MovieCard(props) {
-    const movie = props.movie;
-    const { favourites, addToFavourites } = useContext(MoviesContext);
-    if (favourites.find((id) => id === movie.id)) {
-        movie.favourite = true;
-      } else {
-        movie.favourite = false
-      }
-    
-      const handleAddToFavourite = (e) => {
-        e.preventDefault();
-        addToFavourites(movie);
-      };
+export default function MovieCard({ movie, action }) {
+    const { handleClick, refreshPage, moviedetails } = useContext(MovieContext);
     return (
         <div className="card bg-base-300 shadow-xl m-1">
             <figure><img src={
@@ -24,16 +13,18 @@ export default function MovieCard(props) {
             : `http://via.placeholder.com/500x750`
         } alt="Movie Poster" className="pt-10" /></figure>
             <div className="card-body w-72 content-center">
-                <h2 className="card-title">{
-        movie.favourite ? (
-            <Icon icon="heroicons-solid:heart" />
-        ) : null
-      }&nbsp;{movie.title}</h2>
+                <h2 className="card-title">{movie.title}</h2>
                 <div><span className="badge badge-success"><Icon icon="heroicons-solid:calendar" /> &nbsp; {movie.release_date}</span> &nbsp;
                 <span className="badge badge-warning"><Icon icon="heroicons-solid:star" /> {movie.vote_average}</span></div>
                 <div className="card-actions">
-                        <button className="btn btn-error" onClick={handleAddToFavourite}><Icon icon="heroicons-solid:heart" /></button>
-                    <Link to={`/movies/${movie.id}`}>
+                {action(movie)}
+                    <Link to={`/movies/${movie.id}`}
+                        key={movie.id}
+                        onClick={() => {
+                        handleClick(movie.id);
+                        refreshPage();
+                        console.log(moviedetails);
+                        }}>
                         <button className="btn btn-primary">More Info</button>
                     </Link>
                 </div>
