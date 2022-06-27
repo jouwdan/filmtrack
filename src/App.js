@@ -15,8 +15,10 @@ import Dashboard from './pages/Dashboard';
 
 import GuestNav from './components/nav/guestNav';
 import MemberNav from './components/nav/memberNav';
+
 import PopularMovies from "./pages/PopularMovies";
 import SingleMovie from "./pages/SingleMovie";
+import UpcomingMovies from "./pages/upcomingMovies";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -44,6 +46,7 @@ function App() {
         <Route path="/reset" element={<Reset />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/movies/popular" element={<PopularMovies />} />
+        <Route path="/movies/upcoming" element={<UpcomingMovies />} />
         <Route path="/movies/:id" element={<SingleMovie />} />
        </Routes>
       </main>
