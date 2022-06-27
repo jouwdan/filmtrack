@@ -37,6 +37,7 @@ class MovieContextProvider extends Component {
     componentDidMount = () => {
         this.getTrendingMovies();
         this.getPopularMovies();
+        this.getUpcomingMovies();
         this.cleanState();
         this.handleClick();
         this.searchMovie();
