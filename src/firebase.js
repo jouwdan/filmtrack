@@ -14,6 +14,7 @@ import {
 import {
   useAuthState
 } from "react-firebase-hooks/auth";
+import { MovieContext } from "./Context";
 
 const firebaseConfig = {
   apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,

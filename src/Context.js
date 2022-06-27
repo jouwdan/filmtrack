@@ -1,17 +1,9 @@
-import { assertExpressionStatement } from "@babel/types";
-import { useAuthState } from "react-firebase-hooks/auth";
 import axios from "axios";
-import React, {
-    Component,
-    createContext
-} from "react";
-import { 
-    Persist 
-} from "react-persist";
-import { 
-    auth,
-    db
-} from "./firebase";
+import React, { Component, createContext } from "react";
+import { Persist } from "react-persist";
+import { auth, db } from "./firebase";
+import { collection, query, where, onSnapshot, QuerySnapshot, doc, setDoc, deleteDoc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
 
 export const MovieContext = createContext();
 
@@ -21,7 +13,9 @@ class MovieContextProvider extends Component {
         this.state = {
             // user states
             currentUser: null,
+            favouritesArray: [],
             favourites: [],
+            result: [],
             // movie states
             trending: [],
             popular: [],
@@ -48,30 +42,28 @@ class MovieContextProvider extends Component {
         this.searchMovie();
         this.clearSearch();
 
-        // Sign user in
-        if (this.state.currentUser) {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
                 this.setState({
                     currentUser: {
-                        id: auth.uid
+                        id: user.uid
                     }
                 });
-
-                new Promise(resolve => setTimeout(resolve, 4000));
-                
-                db.ref(`favourites/movies/${this.state.currentUser.uid}`).on('value', res => {
-                    const resMovies = res.val();
-                    const userFavourites = [];
-                    for(let objKey in resMovies) {
-                        resMovies[objKey].key = objKey;
-                        userFavourites.push(resMovies[objKey]);
-                        this.setState({ favourite: userFavourites, result: resMovies });
-                    }
-                })
+                const q = query(collection(db, 'favourites', 'movies', this.state.currentUser.id))
+                onSnapshot(q, (querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+                        this.setState({
+                            favourites: [...this.state.favourites, doc.data()]
+                        });
+                    })
+                });
+                console.log(this.state.favourites);
             } else {
                 this.setState({
-                    currentUser: auth
-                });
-            };
+                    currentUser: null
+                })
+            }
+          });
     };
 
     // cleans state for movie lists to avoid duplicates
@@ -80,7 +72,8 @@ class MovieContextProvider extends Component {
             popular: [],
             nowplaying: [],
             upcoming: [],
-            toprated: []
+            toprated: [],
+            favourites: []
         });
     };
 
@@ -155,12 +148,12 @@ class MovieContextProvider extends Component {
 
     getMovieDetails = () => {
         axios.get(
-            `https://api.themoviedb.org/3/movie/{$this.state.id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
+            `https://api.themoviedb.org/3/movie/${this.state.id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
             ).then(response => {
             const apiResponse = response.data;
             this.setState({
-                moviedetails: apiResponse.results
-            });
+                moviedetails: apiResponse
+            })
         }).catch (error => {
             console.log(error);
         });
@@ -168,7 +161,7 @@ class MovieContextProvider extends Component {
 
     getMovieImages = () => {
         axios.get(
-            `https://api.themoviedb.org/3/movie/{$this.state.id}/images?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
+            `https://api.themoviedb.org/3/movie/${this.state.id}/images?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
             ).then(response => {
             const apiResponse = response.data;
             this.setState({
@@ -181,7 +174,7 @@ class MovieContextProvider extends Component {
 
     getSimilarMovies = () => {
         axios.get(
-            `https://api.themoviedb.org/3/movie/{$this.state.id}/similar?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
+            `https://api.themoviedb.org/3/movie/${this.state.id}/similar?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
             ).then(response => {
             const apiResponse = response.data;
             this.setState({
@@ -256,17 +249,17 @@ class MovieContextProvider extends Component {
         });
     };
 
-    setFavourites = (movies) => {
+    setFavourites = (movie) => {
         const { favourites } = this.state;
         let favouritesCopy = [...favourites];
-        let key = movies.id;
-
-        if (!favourites.includes(movies)) {
-            db.ref(`favourites/movies/${this.state.currentUser.id}`).set(movies);
+        let key = movie.id;
+        console.log(movie);
+        if (!favourites.includes(movie)) {
+            setDoc(doc(db, 'favourites', 'movies', this.state.currentUser.id, key.toString()), movie);
         } else {
-            favouritesCopy = favouritesCopy.filter(eachMovie => eachMovie !== movies);
+            favouritesCopy = favouritesCopy.filter(eachMovie => eachMovie !== movie);
             this.setState({ favourites: favouritesCopy });            
-            db.ref(`favourites/movies/${this.state.currentUser.id}`).child(key).remove();
+            deleteDoc(doc(db, 'favourites', 'movies', this.state.currentUser, key.toString()));
         };
     };
 

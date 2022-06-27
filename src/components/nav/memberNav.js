@@ -14,10 +14,19 @@ function memberNav() {
                 <NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'btn btn-ghost btn-active mr-2 hidden lg:flex' : 'btn btn-ghost mr-2 hidden lg:flex')}>
                     Dashboard
                 </NavLink>
-                <NavLink to="/discover" className={({ isActive }) => (isActive ? 'btn btn-ghost btn-active mr-2 hidden lg:flex' : 'btn btn-ghost mr-2 hidden lg:flex')}>
-                    Discover
-                </NavLink>
-                </div>
+                <div className="dropdown">
+                <label tabIndex="0" className="btn btn-ghost">
+                Movies
+                </label>
+                <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                <li>
+                    <NavLink to="/movies/popular" className={({ isActive }) => (isActive ? 'btn btn-ghost btn-active mr-2 hidden lg:flex' : 'btn btn-ghost mr-2 hidden lg:flex')}>
+                        Popular
+                    </NavLink>
+                </li>
+                </ul>
+            </div>
+            </div>
             <div className="navbar-end">
                 <div className="dropdown dropdown-end">
                     <label tabIndex="0" className="btn btn-circle">
@@ -34,7 +43,7 @@ function memberNav() {
                     </label>
                     <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'btn btn-ghost btn-active mb-2' : 'btn btn-ghost mb-2')}>Dashboard</NavLink></li>
-                        <li><NavLink to="/discover" className={({ isActive }) => (isActive ? 'btn btn-ghost btn-active mb-2' : 'btn btn-ghost mb-2')}>Discover</NavLink></li>
+                        <li><NavLink to="/movies" className={({ isActive }) => (isActive ? 'btn btn-ghost btn-active mb-2' : 'btn btn-ghost mb-2')}>Movies</NavLink></li>
                     </ul>
                 </div>
             </div>
