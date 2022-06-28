@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-import { auth, db, getFavourites, logout } from "../firebase";
+import { auth, db, logout } from "../firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import { MovieContext, getMovieDetails } from "../Context";
 import MovieListTemplate from '../components/templates/movieListTemplate';
 import AddToFavouritesIcon from '../components/cards/icons/addToFavourites';
+import AddToWatchlistIcon from '../components/cards/icons/addToWatchlist';
 
 function Dashboard() {
   const [user, loading, error] = useAuthState(auth);
@@ -13,7 +14,8 @@ function Dashboard() {
   const navigate = useNavigate();
   const {
     currentUser,
-    favourites
+    favouriteMovies,
+    movieWatchlist
 } = useContext(MovieContext);
   
   useEffect(() => {
@@ -45,9 +47,19 @@ function Dashboard() {
       <h2 className="text-2xl pt-8 pl-8">Favourite Movies</h2>
     <MovieListTemplate
     title='Favourite Movies'
-    movies={favourites}
+    movies={favouriteMovies}
     action={(movie) => {
         return <AddToFavouritesIcon movie={movie} />
+      }}
+  />
+  </div>
+  <div className="card bg-base-200 m-4">
+      <h2 className="text-2xl pt-8 pl-8">Watch list</h2>
+    <MovieListTemplate
+    title='Watchlist'
+    movies={movieWatchlist}
+    action={(movie) => {
+        return <AddToWatchlistIcon movie={movie} />
       }}
   />
   </div>

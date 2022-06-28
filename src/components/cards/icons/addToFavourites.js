@@ -5,7 +5,7 @@ import { MovieContext } from "../../../Context";
 const AddToFavouritesIcon = ({ movie }) => {
   const {
     setFavourites,
-    favourites,
+    favouriteMovies,
     currentUser
   } = useContext(MovieContext);
 
@@ -13,7 +13,7 @@ const AddToFavouritesIcon = ({ movie }) => {
   return (
     <div className="tooltip" data-tip="favourite movie">
     {
-    favourites.includes(movie) ? (
+    favouriteMovies.includes(movie) ? (
 <button className="btn btn-error" onClick={() => setFavourites(movie)}><Icon icon="heroicons-solid:heart" /></button>
 ) : <button className="btn" onClick={() => setFavourites(movie)}><Icon icon="heroicons-solid:heart" /></button>
 }

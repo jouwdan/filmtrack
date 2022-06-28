@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { Component, createContext } from "react";
 import { Persist } from "react-persist";
 import { auth, db } from "./firebase";
-import { collection, query, where, onSnapshot, QuerySnapshot, doc, setDoc, deleteDoc } from "firebase/firestore";
+import { collection, query, where, onSnapshot, QuerySnapshot, doc, setDoc, deleteDoc, getDocs } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 
 export const MovieContext = createContext();
@@ -13,8 +13,8 @@ class MovieContextProvider extends Component {
         this.state = {
             // user states
             currentUser: null,
-            favouritesArray: [],
-            favourites: [],
+            favouriteMovies: [],
+            movieWatchlist: [],
             result: [],
             // movie states
             trending: [],
@@ -44,6 +44,7 @@ class MovieContextProvider extends Component {
         this.clearSearch();
         if (auth.currentUser) {
             this.getFavourites();
+            this.getMovieWatchlist();
         }
 
         onAuthStateChanged(auth, (user) => {
@@ -54,6 +55,7 @@ class MovieContextProvider extends Component {
                     }
                 });
                 this.getFavourites();
+                this.getMovieWatchlist();
             } else {
                 this.setState({
                     currentUser: null
@@ -69,7 +71,7 @@ class MovieContextProvider extends Component {
             nowplaying: [],
             upcoming: [],
             toprated: [],
-            favourites: []
+            favouriteMovies: []
         });
     };
 
@@ -246,34 +248,65 @@ class MovieContextProvider extends Component {
     };
 
     setFavourites = (movie) => {
-        const { favourites } = this.state;
-        let favouritesCopy = [...favourites];
+        const { favouriteMovies } = this.state;
+        let favouritesCopy = [...favouriteMovies];
         let key = movie.id;
         console.log(movie);
-        if (!favourites.includes(movie)) {
+        if (!favouriteMovies.includes(movie)) {
             setDoc(doc(db, 'favourites', 'movies', this.state.currentUser.id, key.toString()), movie);
             this.setState({
-                favourites: [...favourites, movie]
+                favouriteMovies: [...favouriteMovies, movie]
             });
         } else {
             favouritesCopy = favouritesCopy.filter(eachMovie => eachMovie !== movie);
-            this.setState({ favourites: favouritesCopy });            
+            this.setState({ favouriteMovies: favouritesCopy });            
             deleteDoc(doc(db, 'favourites', 'movies', this.state.currentUser, key.toString()));
         };
     };
-
     getFavourites = () => {
-        const q = query(collection(db, 'favourites', 'movies', this.state.currentUser.id))
+        const q = query(collection(db, 'favourites', 'movies', this.state.currentUser.id));
+        const favouritesArray = [];
         onSnapshot(q, (querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                this.setState({
-                    favourites: [doc.data()]
-                });
-            })
-        });
-        console.log(this.state.favourites);
+                favouritesArray.push(doc.data());
+            });
+        });     
+        this.setState({
+            favouriteMovies: favouritesArray
+        });   
+        console.log(this.state.favouriteMovies);
         this.refreshPage();
-    }
+    };
+    setMovieWatchlist = (movie) => {
+        const { movieWatchlist } = this.state;
+        let watchlistCopy = [...movieWatchlist];
+        let key = movie.id;
+        console.log(movie);
+        if (!movieWatchlist.includes(movie)) {
+            setDoc(doc(db, 'watchlist', 'movies', this.state.currentUser.id, key.toString()), movie);
+            this.setState({
+                movieWatchlist: [...movieWatchlist, movie]
+            });
+        } else {
+            watchlistCopy = watchlistCopy.filter(eachMovie => eachMovie !== movie);
+            this.setState({ movieWatchlist: watchlistCopy });            
+            deleteDoc(doc(db, 'watchlist', 'movies', this.state.currentUser, key.toString()));
+        };
+    };
+    getMovieWatchlist = () => {
+        const q = query(collection(db, 'watchlist', 'movies', this.state.currentUser.id));
+        const watchlistArray = [];
+        onSnapshot(q, (querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                watchlistArray.push(doc.data());
+            });
+        });     
+        this.setState({
+            movieWatchlist: watchlistArray
+        });   
+        console.log(this.state.movieWatchlist);
+        this.refreshPage();
+    };
 
     render() {
         return (
@@ -296,6 +329,7 @@ class MovieContextProvider extends Component {
                     clearVisible: this.clearVisible,
                     refreshPage: this.refreshPage,
                     setFavourites: this.setFavourites,
+                    setMovieWatchlist: this.setMovieWatchlist,
                 }}
             >
             {this.props.children}
