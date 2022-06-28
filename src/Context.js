@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { Component, createContext } from "react";
 import { Persist } from "react-persist";
 import { auth, db } from "./firebase";
-import { collection, query, where, onSnapshot, QuerySnapshot, doc, setDoc, deleteDoc } from "firebase/firestore";
+import { collection, query, where, onSnapshot, QuerySnapshot, doc, setDoc, deleteDoc, getDocs } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 
 export const MovieContext = createContext();
@@ -261,16 +261,17 @@ class MovieContextProvider extends Component {
             deleteDoc(doc(db, 'favourites', 'movies', this.state.currentUser, key.toString()));
         };
     };
-
     getFavourites = () => {
-        const q = query(collection(db, 'favourites', 'movies', this.state.currentUser.id))
+        const q = query(collection(db, 'favourites', 'movies', this.state.currentUser.id));
+        const favouritesArray = [];
         onSnapshot(q, (querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                this.setState({
-                    favourites: [doc.data()]
-                });
-            })
-        });
+                favouritesArray.push(doc.data());
+            });
+        });     
+        this.setState({
+            favourites: favouritesArray
+        });   
         console.log(this.state.favourites);
         this.refreshPage();
     }
