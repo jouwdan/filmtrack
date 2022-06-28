@@ -1,7 +1,7 @@
 import React, { useContext }from "react";
 import { MovieContext } from "../Context";
 import MovieListTemplate from '../components/templates/movieListTemplate';
-import AddToFavouritesIcon from '../components/cards/icons/addToFavourites';
+import AddToWatchlistIcon from '../components/cards/icons/addToWatchlist';
 
 const PopularMovies = () => {
     const {
@@ -16,7 +16,7 @@ const PopularMovies = () => {
     title='Upcoming Movies'
     movies={upcoming}
     action={(movie) => {
-        return <AddToFavouritesIcon movie={movie} />
+        return <AddToWatchlistIcon movie={movie} />
       }}
   />
         </div>

@@ -4,7 +4,7 @@ import { MovieContext } from "../../Context";
 import { Icon } from '@iconify/react';
 
 export default function MovieCard({ movie, action }) {
-    const { handleClick, refreshPage, moviedetails } = useContext(MovieContext);
+    const { handleClick, refreshPage, favourites } = useContext(MovieContext);
     return (
         <div className="card bg-base-300 shadow-xl m-1">
             <figure><img src={
@@ -23,7 +23,6 @@ export default function MovieCard({ movie, action }) {
                         onClick={() => {
                         handleClick(movie.id);
                         refreshPage();
-                        console.log(moviedetails);
                         }}>
                         <button className="btn btn-primary">More Info</button>
                     </Link>
