@@ -47,7 +47,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/movies/popular" element={<PopularMovies />} />
         <Route path="/movies/upcoming" element={<UpcomingMovies />} />
-        <Route path="/movies/trending" element={<UpcomingMovies />} />
+        <Route path="/movies/trending" element={<TrendingMovies />} />
         <Route path="/movies/:id" element={<SingleMovie />} />
        </Routes>
       </main>
