@@ -36,6 +36,10 @@ function Navigation() {
                     <NavLink to="/movies/upcoming" className={({ isActive }) => (isActive ? 'btn btn-ghost btn-active mr-2 hidden lg:flex' : 'btn btn-ghost mr-2 hidden lg:flex')}>
                         Upcoming
                     </NavLink>
+                </li><li>
+                    <NavLink to="/movies/trending" className={({ isActive }) => (isActive ? 'btn btn-ghost btn-active mr-2 hidden lg:flex' : 'btn btn-ghost mr-2 hidden lg:flex')}>
+                        Trending
+                    </NavLink>
                 </li>
                 </ul>
             </div>
