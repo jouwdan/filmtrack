@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-import { useQueries } from "react-query";
 import { auth, db, getFavourites, logout } from "../firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import { MovieContext, getMovieDetails } from "../Context";

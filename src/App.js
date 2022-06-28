@@ -1,9 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { QueryClientProvider, QueryClient } from "react-query";
-import { ReactQueryDevtools } from 'react-query/devtools'
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from './firebase';
 
 import MovieContextProvider from "./Context.js";
 
@@ -20,21 +16,9 @@ import SingleMovie from "./pages/SingleMovie";
 import UpcomingMovies from "./pages/upcomingMovies";
 import TrendingMovies from "./pages/TrendingMovies";
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 360000,
-      refetchInterval: 360000, 
-      refetchOnWindowFocus: false
-    },
-  },
-});
-
 function App() {
-  const [user, loading, error] = useAuthState(auth);
    return (
     <MovieContextProvider>
-    <QueryClientProvider client={queryClient}>
     <Router>
      <div className="flex flex-col justify-between bg-base-100" data-theme="dark">
      <Navigation />
@@ -53,8 +37,6 @@ function App() {
       </main>
      </div>
     </Router>
-      <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
       </MovieContextProvider>
    );
   }
