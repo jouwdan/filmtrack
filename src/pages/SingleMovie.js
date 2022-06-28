@@ -2,11 +2,15 @@ import React, {useContext}  from "react";
 import { useParams } from "react-router-dom";
 import { Icon } from '@iconify/react';
 import { MovieContext } from "../Context";
+import { signInWithEmailLink } from "@firebase/auth";
+import MovieListTemplate from '../components/templates/movieListTemplate';
+import AddToFavouritesIcon from '../components/cards/icons/addToFavourites';
 
 const SingleMovie = (props) => {
 
     const {
-        moviedetails
+        moviedetails,
+        similar
     } = useContext(MovieContext);
 
     console.log(moviedetails);
@@ -41,6 +45,16 @@ const SingleMovie = (props) => {
   </div>
 </div>
           </div>
+          <div className="card bg-base-200 mt-4 mb-4">
+      <h2 className="text-2xl pt-8 pl-8">Simiar Movies</h2>
+    <MovieListTemplate
+    title='Simiar Movies'
+    movies={similar}
+    action={(movie) => {
+        return <AddToFavouritesIcon movie={movie} />
+      }}
+  />
+  </div>
         </>
       ) : (
         <h2>Waiting for API data</h2>

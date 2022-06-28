@@ -6,7 +6,6 @@ const AddToWatchlistIcon = ({ movie }) => {
   const {
     setMovieWatchlist,
     movieWatchlist,
-    favouriteMovies,
     currentUser
   } = useContext(MovieContext);
 
