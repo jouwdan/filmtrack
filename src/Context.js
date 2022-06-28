@@ -283,7 +283,7 @@ class MovieContextProvider extends Component {
                     getTrendingMovies: this.getTrendingMovies,
                     getPopularMovies: this.getPopularMovies,
                     getNowPlayingMovies: this.getNowPlayingMovies,
-                    getUpomingMovies: this.getUpcomingMovies,
+                    getUpcomingMovies: this.getUpcomingMovies,
                     getTopRatedMovies: this.getTopRatedMovies,
                     handleClick: this.handleClick,
                     handleSubmit: this.handleSubmit,
