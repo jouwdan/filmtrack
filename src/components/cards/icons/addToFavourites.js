@@ -5,8 +5,11 @@ import { MovieContext } from "../../../Context";
 const AddToFavouritesIcon = ({ movie }) => {
   const {
     setFavourites,
-    favourites
+    favourites,
+    currentUser
   } = useContext(MovieContext);
+
+  if(currentUser){ 
   return (
     <div className="tooltip" data-tip="favourite movie">
     {
@@ -16,6 +19,7 @@ const AddToFavouritesIcon = ({ movie }) => {
 }
 </div>
   );
+};
 };
 
 export default AddToFavouritesIcon;

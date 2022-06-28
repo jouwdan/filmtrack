@@ -13,8 +13,7 @@ import Register from './pages/Register';
 import Reset from './pages/Reset';
 import Dashboard from './pages/Dashboard';
 
-import GuestNav from './components/nav/guestNav';
-import MemberNav from './components/nav/memberNav';
+import Navigation from './components/nav/Navigation';
 
 import PopularMovies from "./pages/PopularMovies";
 import SingleMovie from "./pages/SingleMovie";
@@ -37,7 +36,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
     <Router>
      <div className="flex flex-col justify-between bg-base-100" data-theme="dark">
-     {user ? <MemberNav /> : <GuestNav />}
+     <Navigation />
       <main className="container mx-auto px-3 pb-12">
        <Routes>
         <Route path="/" element={<Home />} />

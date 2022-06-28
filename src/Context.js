@@ -42,6 +42,9 @@ class MovieContextProvider extends Component {
         this.handleClick();
         this.searchMovie();
         this.clearSearch();
+        if (auth.currentUser) {
+            this.getFavourites();
+        }
 
         onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -50,15 +53,7 @@ class MovieContextProvider extends Component {
                         id: user.uid
                     }
                 });
-                const q = query(collection(db, 'favourites', 'movies', this.state.currentUser.id))
-                onSnapshot(q, (querySnapshot) => {
-                    querySnapshot.forEach((doc) => {
-                        this.setState({
-                            favourites: [...this.state.favourites, doc.data()]
-                        });
-                    })
-                });
-                console.log(this.state.favourites);
+                this.getFavourites();
             } else {
                 this.setState({
                     currentUser: null
@@ -257,12 +252,27 @@ class MovieContextProvider extends Component {
         console.log(movie);
         if (!favourites.includes(movie)) {
             setDoc(doc(db, 'favourites', 'movies', this.state.currentUser.id, key.toString()), movie);
+            this.setState({
+                favourites: [...favourites, movie]
+            });
         } else {
             favouritesCopy = favouritesCopy.filter(eachMovie => eachMovie !== movie);
             this.setState({ favourites: favouritesCopy });            
             deleteDoc(doc(db, 'favourites', 'movies', this.state.currentUser, key.toString()));
         };
     };
+
+    getFavourites = () => {
+        const q = query(collection(db, 'favourites', 'movies', this.state.currentUser.id))
+        onSnapshot(q, (querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                this.setState({
+                    favourites: [doc.data()]
+                });
+            })
+        });
+        console.log(this.state.favourites);
+    }
 
     render() {
         return (
@@ -273,7 +283,7 @@ class MovieContextProvider extends Component {
                     getTrendingMovies: this.getTrendingMovies,
                     getPopularMovies: this.getPopularMovies,
                     getNowPlayingMovies: this.getNowPlayingMovies,
-                    getUpomingMovies: this.getUpcomingMovies,
+                    getUpcomingMovies: this.getUpcomingMovies,
                     getTopRatedMovies: this.getTopRatedMovies,
                     handleClick: this.handleClick,
                     handleSubmit: this.handleSubmit,
