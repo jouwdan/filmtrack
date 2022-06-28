@@ -272,6 +272,7 @@ class MovieContextProvider extends Component {
             })
         });
         console.log(this.state.favourites);
+        this.refreshPage();
     }
 
     render() {
