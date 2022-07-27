@@ -12,8 +12,9 @@ function AccountForm() {
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
   const { currentUser } = useContext(MovieContext);
+
   const updateAccount = () => {
-    updateUserProfile(name, email);
+    updateUserProfile(currentUser, name, email);
     if (updateUserProfile) navigate("/account", { replace: true });
   };
 

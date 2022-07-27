@@ -24,9 +24,9 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-const updateUserProfile = async (auth, name, email) => {
+const updateUserProfile = async (currentUser, name, email) => {
   try {
-    await updateProfile(auth.currentUser, {
+    await updateProfile(currentUser, {
       name: name,
       email: email,
     });
