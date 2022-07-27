@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
+  updateProfile,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
@@ -22,6 +23,18 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+
+const updateUserProfile = async (auth, name, email) => {
+  try {
+    await updateProfile(auth.currentUser, {
+      name: name,
+      email: email,
+    });
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+};
 
 const logInWithEmailAndPassword = async (email, password) => {
   try {
@@ -68,5 +81,6 @@ export {
   logInWithEmailAndPassword,
   registerWithEmailAndPassword,
   sendPasswordReset,
+  updateUserProfile,
   logout,
 };

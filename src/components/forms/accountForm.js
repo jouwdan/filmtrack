@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, db } from "../../firebase";
+import { auth, db, updateUserProfile } from "../../firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import { MovieContext } from "../../Context";
 
@@ -13,8 +13,8 @@ function AccountForm() {
   const navigate = useNavigate();
   const { currentUser } = useContext(MovieContext);
   const updateAccount = () => {
-    if (!name) alert("Please enter name");
-    if (user) navigate("/dashboard", { replace: true });
+    updateUserProfile(name, email);
+    if (updateUserProfile) navigate("/account", { replace: true });
   };
 
   const fetchAccount = async () => {
@@ -36,6 +36,7 @@ function AccountForm() {
   useEffect(() => {
     if (loading) return;
     if (!user) navigate("/login", { replace: true });
+    fetchAccount();
   }, [user, loading]);
 
   return (
@@ -78,7 +79,7 @@ function AccountForm() {
               className="input input-bordered"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
+              placeholder="Enter Your Password"
             />
           </div>
           <button className="btn btn-primary w-full" onClick={updateAccount}>
