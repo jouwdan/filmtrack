@@ -4,16 +4,10 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
-  signOut
+  signOut,
 } from "firebase/auth";
-import {
-  getFirestore,
-  collection,
-  addDoc
-} from "firebase/firestore";
-import {
-  useAuthState
-} from "react-firebase-hooks/auth";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { MovieContext } from "./Context";
 
 const firebaseConfig = {
@@ -22,7 +16,7 @@ const firebaseConfig = {
   projectId: `${process.env.REACT_APP_FIREBASE_PROJECTID}`,
   storageBucket: `${process.env.REACT_APP_FIREBASE_STORAGEBUCKET}`,
   messagingSenderId: `${process.env.REACT_APP_FIREBASE_MESSAGINGSENDERID}`,
-  appId: `${process.env.REACT_APP_FIREBASE_APPID}`
+  appId: `${process.env.REACT_APP_FIREBASE_APPID}`,
 };
 
 const app = initializeApp(firebaseConfig);
@@ -74,5 +68,5 @@ export {
   logInWithEmailAndPassword,
   registerWithEmailAndPassword,
   sendPasswordReset,
-  logout
+  logout,
 };

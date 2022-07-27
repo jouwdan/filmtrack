@@ -13,24 +13,23 @@ function ResetPasswordForm() {
     if (user) navigate("/dashboard");
   }, [user, loading]);
   return (
-
     <div className="flex pt-6">
-        <div className="card shadow-2xl bg-base-200 flex-1 justify-center p-12">
-            <div className="card-header">
-                <h2 className="text-3xl">Reset Filmtrack Password</h2>
-            </div>
+      <div className="card shadow-2xl bg-base-200 flex-1 justify-center p-12">
+        <div className="card-header">
+          <h2 className="text-3xl">Reset Filmtrack Password</h2>
+        </div>
         <div className="card-body">
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Email</span>
-          </label>
-          <input
-            type="text"
-            className="input input-bordered"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="E-mail Address"
-          />
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Email</span>
+            </label>
+            <input
+              type="text"
+              className="input input-bordered"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="E-mail Address"
+            />
           </div>
           <button
             className="btn btn-primary w-full"
@@ -39,11 +38,15 @@ function ResetPasswordForm() {
             Send password reset Email
           </button>
           <div className="justify-end">
-            Don't have an account? <Link to="/register" className="link">Register now</Link>.
+            Don't have an account?{" "}
+            <Link to="/register" className="link">
+              Register now
+            </Link>
+            .
           </div>
         </div>
       </div>
-      </div>
+    </div>
   );
 }
 export default ResetPasswordForm;
