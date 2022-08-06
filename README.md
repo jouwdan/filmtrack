@@ -1,70 +1,98 @@
-# Getting Started with Create React App
+# ICT Skills 2 Assignment.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Name: Jordan Harrison
 
-## Available Scripts
+## Overview.
 
-In the project directory, you can run:
+Filmtrack is a React & Firebase app that uses the TMDB API to track movies and keep a log of favourites & a watch list.
 
-### `npm start`
+e.g.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Firebase user login & database
+- TailwindCSS & DaisyUI Design System
+- Functional searching
+- Similar movies on single movie page
+- React-persist for persistent variables
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Setup requirements.
 
-### `npm test`
+- Clone this repository
+- Rename `.env.example` to `.env` and fill in your API & Firebase details
+- Install dependancies with `npm i`
+- Run the applicaation using `npm start`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## App Design.
 
-### `npm run build`
+### Routing/Navigation.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[List the set of routes your app supports - only mention new instances if you expanded the Movies Fan app. State the view linked with each route.]
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+e.g.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- /login - Log into the application
+- /register - Register an account
+- /reset - Reset your password
+- /account - Account page
+- /movies/popular - Show popular movies
+- /movies/trending - Show trending movies
+- /movies/upcoming - Show upcoming movies
+- /movies/search - Search for a movie
+- /movies/:id - Show details for a specific movie
 
-### `npm run eject`
+### Views/Pages.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+[ For each view in your app, show a screenshot and caption - only new/modified ones in the case of the Movies Fan app. If necessary, use multiple screenshots to cover a view's full capability.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+e.g.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+> Lists movies from the Discover endpoint. Filtering on title and genre attributes is supported.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![][logo192]
 
-## Learn More
+> Shows detailed information on a specific movie
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![][logo192]
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Component catalogue.
 
-### Code Splitting
+[ Use the Storybook UI to highlight the new components for which you developed stories.]
+e.g.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![][logo192]
 
-### Analyzing the Bundle Size
+## Caching.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+[ List the TMDB server state cached by the app. Include a screenshot(s) of the react-query dev tools to validate your list.]
 
-### Making a Progressive Web App
+e.g.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Discover movies (pagination support)
+- Movie details
+- etc
+- etc
 
-### Advanced Configuration
+![][logo192]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Authentication (if relevant).
 
-### Deployment
+[Briefly state how you implemented authentication for the app, e.g. basic, Firebase, etc. Also, list the routes that are private/protected.]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+e.g.
 
-### `npm run build` fails to minify
+- /reviews/:id
+- /movies/favourites
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Server-side persistence (if relevant)
+
+[ Specify the persistence
+platform your app uses (e.g. TMDB lists, Firestore) and itemize the data it persists.]
+
+## Additional features (if relevant),
+
+[Mention any additional user features of your app that may not be obvious from the previous sections, e.g. pagination, extended filtering/sorting, searching.]
+
+## Independent learning (if relevant),
+
+[Briefly explain any aspects of your assignment work that required independent learning (i.e. not addressed in the lectures or labs) on your behalf., e.g. 3rd-party components, libraries, tools. Include source code references.]
+
+[logo192]: ./public/logo192.png
