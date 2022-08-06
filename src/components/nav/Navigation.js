@@ -82,6 +82,18 @@ function Navigation() {
                 Trending
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to="/movies/search"
+                className={({ isActive }) =>
+                  isActive
+                    ? "btn btn-ghost btn-active mr-2 hidden lg:flex"
+                    : "btn btn-ghost mr-2 hidden lg:flex"
+                }
+              >
+                Search
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>
