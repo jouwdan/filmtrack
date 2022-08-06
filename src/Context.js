@@ -5,13 +5,10 @@ import { auth, db } from "./firebase";
 import {
   collection,
   query,
-  where,
   onSnapshot,
-  QuerySnapshot,
   doc,
   setDoc,
   deleteDoc,
-  getDocs,
 } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -37,8 +34,6 @@ class MovieContextProvider extends Component {
       moviedetails: [],
       similar: [],
       // additional states
-      movies: [],
-      searchMovieResult: [],
       visible: 10,
       pageRefreshed: false,
     };
@@ -50,7 +45,6 @@ class MovieContextProvider extends Component {
     this.getUpcomingMovies();
     this.cleanState();
     this.handleClick();
-    this.searchMovie();
     this.clearSearch();
     if (auth.currentUser) {
       this.getFavourites();
@@ -210,22 +204,6 @@ class MovieContextProvider extends Component {
         const apiResponse = response.data;
         this.setState({
           similar: apiResponse.results,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  searchMovie = () => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${this.state.movies}&language=en-US&page=1`
-      )
-      .then((response) => {
-        const apiResponse = response.data;
-        this.setState({
-          searchMovieResult: apiResponse.results,
         });
       })
       .catch((error) => {

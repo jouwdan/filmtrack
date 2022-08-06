@@ -16,6 +16,7 @@ import PopularMovies from "./pages/PopularMovies";
 import SingleMovie from "./pages/SingleMovie";
 import UpcomingMovies from "./pages/upcomingMovies";
 import TrendingMovies from "./pages/TrendingMovies";
+import SearchMovies from "./pages/SearchMovies";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
               <Route path="/movies/popular" element={<PopularMovies />} />
               <Route path="/movies/upcoming" element={<UpcomingMovies />} />
               <Route path="/movies/trending" element={<TrendingMovies />} />
+              <Route path="/movies/search" element={<SearchMovies />} />
               <Route path="/movies/:id" element={<SingleMovie />} />
             </Routes>
           </main>
