@@ -5,13 +5,10 @@ import { auth, db } from "./firebase";
 import {
   collection,
   query,
-  where,
   onSnapshot,
-  QuerySnapshot,
   doc,
   setDoc,
   deleteDoc,
-  getDocs,
 } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 

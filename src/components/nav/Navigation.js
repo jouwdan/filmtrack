@@ -100,10 +100,10 @@ function Navigation() {
       {!currentUser ? (
         <div className="navbar-end">
           <Link to="/login">
-            <a className="btn mr-2">Login</a>
+            <button className="btn mr-2">Login</button>
           </Link>
           <Link to="/register">
-            <a className="btn btn-primary mr-2">Register</a>
+            <button className="btn btn-primary mr-2">Register</button>
           </Link>
           <div className="dropdown dropdown-end">
             <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -169,9 +169,12 @@ function Navigation() {
                 </a>
               </li>
               <li>
-                <a className="btn btn-ghost" onClick={() => auth.signOut()}>
+                <button
+                  className="btn btn-ghost"
+                  onClick={() => auth.signOut()}
+                >
                   Log Out
-                </a>
+                </button>
               </li>
             </ul>
           </div>

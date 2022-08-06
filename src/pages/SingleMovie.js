@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { MovieContext } from "../Context";
-import { signInWithEmailLink } from "@firebase/auth";
 import MovieListTemplate from "../components/templates/movieListTemplate";
 import AddToFavouritesIcon from "../components/cards/icons/addToFavourites";
 

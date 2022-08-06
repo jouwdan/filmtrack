@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import MovieListTemplate from "../components/templates/movieListTemplate";
 import AddToFavouritesIcon from "../components/cards/icons/addToFavourites";

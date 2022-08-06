@@ -1,15 +1,15 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-import { auth, db, logout } from "../firebase";
+import { auth, db } from "../firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
-import { MovieContext, getMovieDetails } from "../Context";
+import { MovieContext } from "../Context";
 import MovieListTemplate from "../components/templates/movieListTemplate";
 import AddToFavouritesIcon from "../components/cards/icons/addToFavourites";
 import AddToWatchlistIcon from "../components/cards/icons/addToWatchlist";
 
 function Dashboard() {
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const [name, setName] = useState("");
   const navigate = useNavigate();
   const { currentUser, favouriteMovies, movieWatchlist } =
