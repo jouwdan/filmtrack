@@ -38,7 +38,7 @@ function Navigation() {
             Dashboard
           </NavLink>
         )}
-        <div className="dropdown">
+        <div className="dropdown hidden lg:flex">
           <label tabIndex="0" className="btn btn-ghost">
             Movies
           </label>
@@ -211,18 +211,65 @@ function Navigation() {
                   Dashboard
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to="/movies"
-                  className={({ isActive }) =>
-                    isActive
-                      ? "btn btn-ghost btn-active mb-2"
-                      : "btn btn-ghost mb-2"
-                  }
-                >
-                  Movies
-                </NavLink>
-              </li>
+              <div className="collapse collapse-arrow">
+                <input type="checkbox" />
+                <div class="collapse-title btn btn-ghost">Movies</div>
+                <div className="collapse-content">
+                  <ul
+                    tabIndex="0"
+                    className="shadow bg-base-100 rounded-box w-52"
+                  >
+                    <li>
+                      <NavLink
+                        to="/movies/popular"
+                        className={({ isActive }) =>
+                          isActive
+                            ? "btn btn-ghost btn-active mr-2"
+                            : "btn btn-ghost mr-2"
+                        }
+                      >
+                        Popular
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        to="/movies/upcoming"
+                        className={({ isActive }) =>
+                          isActive
+                            ? "btn btn-ghost btn-active mr-2"
+                            : "btn btn-ghost mr-2"
+                        }
+                      >
+                        Upcoming
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        to="/movies/trending"
+                        className={({ isActive }) =>
+                          isActive
+                            ? "btn btn-ghost btn-active mr-2"
+                            : "btn btn-ghost mr-2"
+                        }
+                      >
+                        Trending
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        to="/movies/search"
+                        className={({ isActive }) =>
+                          isActive
+                            ? "btn btn-ghost btn-active mr-2"
+                            : "btn btn-ghost mr-2"
+                        }
+                      >
+                        Search
+                      </NavLink>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </ul>
           </div>
         </div>
