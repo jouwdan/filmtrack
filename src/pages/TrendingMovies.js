@@ -5,7 +5,6 @@ import AddToFavouritesIcon from "../components/cards/icons/addToFavourites";
 
 const PopularMovies = () => {
   const { trending } = useContext(MovieContext);
-
   return (
     <>
       <div className="card bg-base-200 m-4">
