@@ -6,4 +6,6 @@ export default {
   component: AccountForm,
 };
 
-export const Primary = () => <AccountForm />;
+export const Primary = () => {
+  return <AccountForm />;
+};
