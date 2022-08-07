@@ -3,7 +3,7 @@ import React from "react";
 import AccountForm from "./accountForm";
 
 export default {
-  component: Forms,
+  component: AccountForm,
 };
 
 export const Primary = () => <AccountForm />;

@@ -1,73 +1,21 @@
 import React from "react";
 
 import { movieCard } from "././movieCard";
+import MovieContext from "../../Context";
+import sampleMovie from "./sampleMovie";
+import AddToFavouritesIcon from "./icons/addToFavourites";
 
 export default {
   component: movieCard,
+  decorators: [(Story) => <MovieContext>{Story()}</MovieContext>],
 };
 
-const movieObject = {
-  adult: false,
-  backdrop_path: "/5jkE2SzR5uR2egEb1rRhF22JyWN.jpg",
-  belongs_to_collection: {
-    id: 1241,
-    name: "Harry Potter Collection",
-    poster_path: "/eVPs2Y0LyvTLZn6AP5Z6O2rtiGB.jpg",
-    backdrop_path: "/xN6SBJVG8jqqKQrgxthn3J2m49S.jpg",
-  },
-  budget: 125000000,
-  genres: [
-    { id: 12, name: "Adventure" },
-    { id: 14, name: "Fantasy" },
-  ],
-  homepage:
-    "https://www.warnerbros.com/movies/harry-potter-and-sorcerers-stone/",
-  id: 671,
-  imdb_id: "tt0241527",
-  original_language: "en",
-  original_title: "Harry Potter and the Philosopher's Stone",
-  overview:
-    "Harry Potter has lived under the stairs at his aunt and uncle's house his whole life. But on his 11th birthday, he learns he's a powerful wizard—with a place waiting for him at the Hogwarts School of Witchcraft and Wizardry. As he learns to harness his newfound powers with the help of the school's kindly headmaster, Harry uncovers the truth about his parents' deaths—and about the villain who's to blame.",
-  popularity: 275.639,
-  poster_path: "/wuMc08IPKEatf9rnMNXvIDxqP4W.jpg",
-  production_companies: [
-    {
-      id: 174,
-      logo_path: "/IuAlhI9eVC9Z8UQWOIDdWRKSEJ.png",
-      name: "Warner Bros. Pictures",
-      origin_country: "US",
-    },
-    {
-      id: 436,
-      logo_path: "/A7WCkG3F0NFvjGCwUnclpGdIu9E.png",
-      name: "1492 Pictures",
-      origin_country: "US",
-    },
-    {
-      id: 437,
-      logo_path: "/nu20mtwbEIhUNnQ5NXVhHsNknZj.png",
-      name: "Heyday Films",
-      origin_country: "GB",
-    },
-  ],
-  production_countries: [
-    { iso_3166_1: "GB", name: "United Kingdom" },
-    { iso_3166_1: "US", name: "United States of America" },
-  ],
-  release_date: "2001-11-16",
-  revenue: 976475550,
-  runtime: 152,
-  spoken_languages: [
-    { english_name: "English", iso_639_1: "en", name: "English" },
-  ],
-  status: "Released",
-  tagline: "Let the magic begin.",
-  title: "Harry Potter and the Philosopher's Stone",
-  video: false,
-  vote_average: 7.916,
-  vote_count: 23010,
+export const Primary = () => {
+  return (
+    <movieCard
+      movie={sampleMovie}
+      action={(movie) => <AddToFavouritesIcon movie={movie} />}
+    />
+  );
 };
-
-export const Primary = () => (
-  <movieCard key="671" movie={movieObject} action="null" />
-);
+Primary.storyName = "Movie Card";
