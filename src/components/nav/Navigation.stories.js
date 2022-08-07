@@ -1,11 +1,13 @@
 import React from "react";
-import { MovieContext } from "../../Context";
+import { MovieContextProvider } from "../../Context";
 
 import Navigation from "./Navigation";
 
 export default {
   component: Navigation,
-  decorators: [(Story) => <MovieContext>{Story()}</MovieContext>],
+  decorators: [
+    (Story) => <MovieContextProvider>{Story()}</MovieContextProvider>,
+  ],
 };
 
 export const Primary = () => {
