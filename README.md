@@ -6,9 +6,8 @@ Name: Jordan Harrison
 
 Filmtrack is a React & Firebase app that uses the TMDB API to track movies and keep a log of favourites & a watch list.
 
-e.g.
-
 - Firebase user login & database
+- Axios for API calls
 - TailwindCSS & DaisyUI Design System
 - Functional searching
 - Similar movies on single movie page
@@ -38,6 +37,8 @@ e.g.
 - /movies/upcoming - Show upcoming movies
 - /movies/search - Search for a movie
 - /movies/:id - Show details for a specific movie
+- /tv/popular - Show popular TV shows
+- /tv/top - Show top rated TV shows
 
 ### Views/Pages.
 
@@ -73,26 +74,20 @@ e.g.
 
 ![][logo192]
 
-## Authentication (if relevant).
+## Authentication.
 
-[Briefly state how you implemented authentication for the app, e.g. basic, Firebase, etc. Also, list the routes that are private/protected.]
+Authentication has been implemented using Firebase. I wrote [a post on how I implemented this on my blog](https://jord.dev/how-to-build-a-simple-login-system-with-react-firebase).
 
-e.g.
+## Server-side persistence
 
-- /reviews/:id
-- /movies/favourites
+User favourites are persisted in a firestore database, and are stored a variable in the context provider when logged in.
 
-## Server-side persistence (if relevant)
+## Additional features
 
-[ Specify the persistence
-platform your app uses (e.g. TMDB lists, Firestore) and itemize the data it persists.]
+The site is designed to be used mobile-first, with many of the design elements being able to be compressed down to a smaller screen size.
 
-## Additional features (if relevant),
+## Independent learning
 
-[Mention any additional user features of your app that may not be obvious from the previous sections, e.g. pagination, extended filtering/sorting, searching.]
-
-## Independent learning (if relevant),
-
-[Briefly explain any aspects of your assignment work that required independent learning (i.e. not addressed in the lectures or labs) on your behalf., e.g. 3rd-party components, libraries, tools. Include source code references.]
+Since I started my new role as an Associate Software Engineer, the stack I am working with is very react-based. I have done lots of independant learning, with the most notable sources being [The Beginner's Guide to React by Kent C Dodds](https://egghead.io/courses/the-beginner-s-guide-to-react) and [udemy](https://www.udemy.com/).
 
 [logo192]: ./public/logo192.png
