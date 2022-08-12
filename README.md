@@ -22,11 +22,7 @@ Filmtrack is a React & Firebase app that uses the TMDB API to track movies and k
 
 ## App Design.
 
-### Routing/Navigation.
-
-[List the set of routes your app supports - only mention new instances if you expanded the Movies Fan app. State the view linked with each route.]
-
-e.g.
+### Routing/Navigation
 
 - /login - Log into the application
 - /register - Register an account
