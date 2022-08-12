@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import MovieListTemplate from "../components/templates/movieListTemplate";
-import AddToFavouritesIcon from "../components/cards/icons/addToFavourites";
+import MovieListTemplate from "../../components/templates/movieListTemplate";
+import AddToFavouritesIcon from "../../components/cards/icons/addToFavourites";
 
 const SearchMovies = () => {
   const [searchMovies, setSearchMovies] = useState([]);

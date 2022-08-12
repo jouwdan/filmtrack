@@ -14,6 +14,8 @@ import { onAuthStateChanged } from "firebase/auth";
 
 export const MovieContext = createContext();
 
+const apiKey = process.env.REACT_APP_TMDB_API_KEY;
+
 class MovieContextProvider extends Component {
   constructor(props) {
     super(props);
@@ -33,6 +35,11 @@ class MovieContextProvider extends Component {
       id: "",
       moviedetails: [],
       similar: [],
+      // tv states
+      popularTv: [],
+      // single tv state
+      tvdetails: [],
+      similartv: [],
       // additional states
       visible: 10,
       pageRefreshed: false,
@@ -43,6 +50,7 @@ class MovieContextProvider extends Component {
     this.getTrendingMovies();
     this.getPopularMovies();
     this.getUpcomingMovies();
+    this.getPopularTv();
     this.cleanState();
     this.handleClick();
     this.clearSearch();
@@ -76,13 +84,14 @@ class MovieContextProvider extends Component {
       upcoming: [],
       toprated: [],
       favouriteMovies: [],
+      popularTv: [],
     });
   };
 
   getTrendingMovies = () => {
     axios
       .get(
-        `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+        `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`
       )
       .then((response) => {
         const apiResponse = response.data;
@@ -99,7 +108,7 @@ class MovieContextProvider extends Component {
     this.cleanState();
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
+        `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`
       )
       .then((response) => {
         const apiResponse = response.data;
@@ -116,7 +125,7 @@ class MovieContextProvider extends Component {
     this.cleanState();
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
+        `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`
       )
       .then((response) => {
         const apiResponse = response.data;
@@ -133,7 +142,7 @@ class MovieContextProvider extends Component {
     this.cleanState();
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
+        `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=1`
       )
       .then((response) => {
         const apiResponse = response.data;
@@ -150,7 +159,7 @@ class MovieContextProvider extends Component {
     this.cleanState();
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
+        `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`
       )
       .then((response) => {
         const apiResponse = response.data;
@@ -166,7 +175,7 @@ class MovieContextProvider extends Component {
   getMovieDetails = () => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${this.state.id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
+        `https://api.themoviedb.org/3/movie/${this.state.id}?api_key=${apiKey}&language=en-US`
       )
       .then((response) => {
         const apiResponse = response.data;
@@ -182,7 +191,7 @@ class MovieContextProvider extends Component {
   getMovieImages = () => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${this.state.id}/images?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
+        `https://api.themoviedb.org/3/movie/${this.state.id}/images?api_key=${apiKey}&language=en-US&page=1`
       )
       .then((response) => {
         const apiResponse = response.data;
@@ -198,12 +207,60 @@ class MovieContextProvider extends Component {
   getSimilarMovies = () => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${this.state.id}/similar?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
+        `https://api.themoviedb.org/3/movie/${this.state.id}/similar?api_key=${apiKey}&language=en-US&page=1`
       )
       .then((response) => {
         const apiResponse = response.data;
         this.setState({
           similar: apiResponse.results,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  getPopularTv = () => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}`
+      )
+      .then((response) => {
+        const apiResponse = response.data;
+        this.setState({
+          popularTv: apiResponse.results,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  getTvDetails = () => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/tv/${this.state.id}?api_key=${apiKey}&language=en-US`
+      )
+      .then((response) => {
+        const apiResponse = response.data;
+        this.setState({
+          tvdetails: apiResponse,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  getSimilarTv = () => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/tv/${this.state.id}/similar?api_key=${apiKey}&language=en-US&page=1`
+      )
+      .then((response) => {
+        const apiResponse = response.data;
+        this.setState({
+          similartv: apiResponse.results,
         });
       })
       .catch((error) => {
@@ -219,6 +276,8 @@ class MovieContextProvider extends Component {
       () => {
         this.getMovieDetails();
         this.getSimilarMovies();
+        this.getTvDetails();
+        this.getSimilarTv();
       }
     );
   };
@@ -253,12 +312,6 @@ class MovieContextProvider extends Component {
       nowplaying: [],
       upcoming: [],
       toprated: [],
-    });
-  };
-
-  loadMore = () => {
-    this.setState((prev) => {
-      return { visible: prev.visible + 5 };
     });
   };
 
@@ -371,12 +424,9 @@ class MovieContextProvider extends Component {
           handleSubmit: this.handleSubmit,
           handleChange: this.handleChange,
           searchMovie: this.searchMovie,
-          clearSearch: this.clearSearch,
-          loadMore: this.loadMore,
           cleanState: this.cleanState,
           clearVisible: this.clearVisible,
           refreshPage: this.refreshPage,
-          setFavourites: this.setFavourites,
           setMovieWatchlist: this.setMovieWatchlist,
         }}
       >
