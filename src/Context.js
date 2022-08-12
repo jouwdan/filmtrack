@@ -446,6 +446,7 @@ class MovieContextProvider extends Component {
           cleanState: this.cleanState,
           clearVisible: this.clearVisible,
           refreshPage: this.refreshPage,
+          setFavourites: this.setFavourites,
           setMovieWatchlist: this.setMovieWatchlist,
         }}
       >
