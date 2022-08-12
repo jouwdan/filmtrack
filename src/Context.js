@@ -37,6 +37,7 @@ class MovieContextProvider extends Component {
       similar: [],
       // tv states
       popularTv: [],
+      topRatedTv: [],
       // single tv state
       tvdetails: [],
       similartv: [],
@@ -51,6 +52,7 @@ class MovieContextProvider extends Component {
     this.getPopularMovies();
     this.getUpcomingMovies();
     this.getPopularTv();
+    this.getTopRatedTv();
     this.cleanState();
     this.handleClick();
     this.clearSearch();
@@ -85,6 +87,7 @@ class MovieContextProvider extends Component {
       toprated: [],
       favouriteMovies: [],
       popularTv: [],
+      topRatedTv: [],
     });
   };
 
@@ -245,6 +248,22 @@ class MovieContextProvider extends Component {
         const apiResponse = response.data;
         this.setState({
           tvdetails: apiResponse,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  getTopRatedTv = () => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/tv/top_rated?api_key=${apiKey}`
+      )
+      .then((response) => {
+        const apiResponse = response.data;
+        this.setState({
+          topRatedTv: apiResponse.results,
         });
       })
       .catch((error) => {

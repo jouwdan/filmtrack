@@ -116,6 +116,18 @@ function Navigation() {
                 Popular
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to="/tv/top"
+                className={({ isActive }) =>
+                  isActive
+                    ? "btn btn-ghost btn-active mr-2 hidden lg:flex"
+                    : "btn btn-ghost mr-2 hidden lg:flex"
+                }
+              >
+                Top Rated
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>

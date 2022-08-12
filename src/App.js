@@ -19,6 +19,7 @@ import TrendingMovies from "./pages/movies/TrendingMovies";
 import SearchMovies from "./pages/movies/SearchMovies";
 
 import PopularTv from "./pages/tv/PopularTv";
+import TopRatedTv from "./pages/tv/TopRatedTv";
 import SingleTv from "./pages/tv/SingleTv";
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
               <Route path="/movies/search" element={<SearchMovies />} />
               <Route path="/movies/:id" element={<SingleMovie />} />
               <Route path="/tv/popular" element={<PopularTv />} />
+              <Route path="/tv/top" element={<TopRatedTv />} />
               <Route path="/tv/:id" element={<SingleTv />} />
             </Routes>
           </main>
