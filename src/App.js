@@ -12,11 +12,15 @@ import Account from "./pages/Account";
 
 import Navigation from "./components/nav/Navigation";
 
-import PopularMovies from "./pages/PopularMovies";
-import SingleMovie from "./pages/SingleMovie";
-import UpcomingMovies from "./pages/upcomingMovies";
-import TrendingMovies from "./pages/TrendingMovies";
-import SearchMovies from "./pages/SearchMovies";
+import PopularMovies from "./pages/movies/PopularMovies";
+import SingleMovie from "./pages/movies/SingleMovie";
+import UpcomingMovies from "./pages/movies/upcomingMovies";
+import TrendingMovies from "./pages/movies/TrendingMovies";
+import SearchMovies from "./pages/movies/SearchMovies";
+
+import PopularTv from "./pages/tv/PopularTv";
+import TopRatedTv from "./pages/tv/TopRatedTv";
+import SingleTv from "./pages/tv/SingleTv";
 
 function App() {
   return (
@@ -40,6 +44,9 @@ function App() {
               <Route path="/movies/trending" element={<TrendingMovies />} />
               <Route path="/movies/search" element={<SearchMovies />} />
               <Route path="/movies/:id" element={<SingleMovie />} />
+              <Route path="/tv/popular" element={<PopularTv />} />
+              <Route path="/tv/top" element={<TopRatedTv />} />
+              <Route path="/tv/:id" element={<SingleTv />} />
             </Routes>
           </main>
         </div>

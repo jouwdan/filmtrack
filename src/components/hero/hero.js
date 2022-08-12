@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-const Hero = () => {
+function Hero() {
   return (
     <div className="card justify-center h-96 bg-base-200 m-4">
       <div className="hero-content text-center mx-auto">
@@ -14,6 +14,6 @@ const Hero = () => {
       </div>
     </div>
   );
-};
+}
 
-export default React.memo(Hero);
+export default Hero;
