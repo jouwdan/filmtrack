@@ -18,7 +18,7 @@ Filmtrack is a React & Firebase app that uses the TMDB API to track movies and k
 - Clone this repository
 - Rename `.env.example` to `.env` and fill in your API & Firebase details
 - Install dependancies with `npm i`
-- Run the applicaation using `npm start`
+- Run the application using `npm start`
 
 ## App Design.
 
