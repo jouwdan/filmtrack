@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { MovieContext } from "../Context";
-import MovieListTemplate from "../components/templates/movieListTemplate";
-import AddToFavouritesIcon from "../components/cards/icons/addToFavourites";
+import { MovieContext } from "../../Context";
+import MovieListTemplate from "../../components/templates/movieListTemplate";
+import AddToFavouritesIcon from "../../components/cards/icons/addToFavourites";
 
 const PopularMovies = () => {
   const { trending } = useContext(MovieContext);

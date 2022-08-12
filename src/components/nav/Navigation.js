@@ -96,6 +96,40 @@ function Navigation() {
             </li>
           </ul>
         </div>
+        <div className="dropdown hidden lg:flex">
+          <label tabIndex="0" className="btn btn-ghost">
+            TV
+          </label>
+          <ul
+            tabIndex="0"
+            className="menu menu-compact dropdown-content mt-16 p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <NavLink
+                to="/tv/popular"
+                className={({ isActive }) =>
+                  isActive
+                    ? "btn btn-ghost btn-active mr-2 hidden lg:flex"
+                    : "btn btn-ghost mr-2 hidden lg:flex"
+                }
+              >
+                Popular
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/tv/top"
+                className={({ isActive }) =>
+                  isActive
+                    ? "btn btn-ghost btn-active mr-2 hidden lg:flex"
+                    : "btn btn-ghost mr-2 hidden lg:flex"
+                }
+              >
+                Top Rated
+              </NavLink>
+            </li>
+          </ul>
+        </div>
       </div>
       {!currentUser ? (
         <div className="navbar-end">
