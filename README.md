@@ -6,8 +6,6 @@ Name: Jordan Harrison
 
 Filmtrack is a React & Firebase app that uses the TMDB API to track movies and keep a log of favourites & a watch list.
 
-e.g.
-
 - Firebase user login & database
 - TailwindCSS & DaisyUI Design System
 - Functional searching
@@ -23,11 +21,7 @@ e.g.
 
 ## App Design.
 
-### Routing/Navigation.
-
-[List the set of routes your app supports - only mention new instances if you expanded the Movies Fan app. State the view linked with each route.]
-
-e.g.
+### Routing/Navigation
 
 - /login - Log into the application
 - /register - Register an account
@@ -38,61 +32,55 @@ e.g.
 - /movies/upcoming - Show upcoming movies
 - /movies/search - Search for a movie
 - /movies/:id - Show details for a specific movie
+- /tv/popular - Show popular tv shows
+- /tv/top - Show top rated tv shows
 
 ### Views/Pages.
 
-[ For each view in your app, show a screenshot and caption - only new/modified ones in the case of the Movies Fan app. If necessary, use multiple screenshots to cover a view's full capability.
+> Account pages - Login, Register, Reset Password, My Account
 
-e.g.
+![][log-in]
+![][register]
+![][reset]
+![][account]
 
-> Lists movies from the Discover endpoint. Filtering on title and genre attributes is supported.
+> Search movies
 
-![][logo192]
+![][search]
 
-> Shows detailed information on a specific movie
+> Single movie view
 
-![][logo192]
+![][singleview]
 
 ### Component catalogue.
 
-[ Use the Storybook UI to highlight the new components for which you developed stories.]
-e.g.
-
-![][logo192]
+N/A - Storybook broken
 
 ## Caching.
 
-[ List the TMDB server state cached by the app. Include a screenshot(s) of the react-query dev tools to validate your list.]
-
-e.g.
-
-- Discover movies (pagination support)
-- Movie details
-- etc
-- etc
-
-![][logo192]
+Data stored in firebase + using react-persist library to store favourites
 
 ## Authentication (if relevant).
 
-[Briefly state how you implemented authentication for the app, e.g. basic, Firebase, etc. Also, list the routes that are private/protected.]
-
-e.g.
-
-- /reviews/:id
-- /movies/favourites
+Auth is set up using firebase & data stored in firestore.
 
 ## Server-side persistence (if relevant)
 
-[ Specify the persistence
-platform your app uses (e.g. TMDB lists, Firestore) and itemize the data it persists.]
+Data stored in firestore, favourites & watch list stored in a collection.
 
 ## Additional features (if relevant),
 
-[Mention any additional user features of your app that may not be obvious from the previous sections, e.g. pagination, extended filtering/sorting, searching.]
+loading animation (red bar at top of screen)
+axios for api calls
 
 ## Independent learning (if relevant),
 
-[Briefly explain any aspects of your assignment work that required independent learning (i.e. not addressed in the lectures or labs) on your behalf., e.g. 3rd-party components, libraries, tools. Include source code references.]
+As my current job is react based, I have done a lor of independant learning - via learning from colleagues and learning using udemy. I also used Kent C Dodds' intro to react course, which was very informative.
 
 [logo192]: ./public/logo192.png
+[log-in]: ./public/log-in.png
+[register]: ./public/register.png
+[reset]: ./public/reset.png
+[account]: ./public/account.png
+[search]: ./public/search.png
+[singleview]: ./public/singleview.png
