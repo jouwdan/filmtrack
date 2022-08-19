@@ -7,6 +7,7 @@ Name: Jordan Harrison
 Filmtrack is a React & Firebase app that uses the TMDB API to track movies and keep a log of favourites & a watch list.
 
 - Firebase user login & database
+- Axios for API calls
 - TailwindCSS & DaisyUI Design System
 - Functional searching
 - Similar movies on single movie page
@@ -17,7 +18,7 @@ Filmtrack is a React & Firebase app that uses the TMDB API to track movies and k
 - Clone this repository
 - Rename `.env.example` to `.env` and fill in your API & Firebase details
 - Install dependancies with `npm i`
-- Run the applicaation using `npm start`
+- Run the application using `npm start`
 
 ## App Design.
 
@@ -60,22 +61,23 @@ N/A - Storybook broken
 
 Data stored in firebase + using react-persist library to store favourites
 
-## Authentication (if relevant).
+## Authentication.
 
-Auth is set up using firebase & data stored in firestore.
+Authentication has been implemented using Firebase. I wrote [a post on how I implemented this on my blog](https://jord.dev/how-to-build-a-simple-login-system-with-react-firebase).
 
-## Server-side persistence (if relevant)
+## Server-side persistence
 
-Data stored in firestore, favourites & watch list stored in a collection.
+User favourites are persisted in a firestore database, and are stored a variable in the context provider when logged in.
 
-## Additional features (if relevant),
+## Additional features
 
 loading animation (red bar at top of screen)
 axios for api calls
 
-## Independent learning (if relevant),
+## Independent learning
 
-As my current job is react based, I have done a lor of independant learning - via learning from colleagues and learning using udemy. I also used Kent C Dodds' intro to react course, which was very informative.
+Since I started my new role as an Associate Software Engineer, the stack I am working with is very react-based. I have done lots of independant learning, with the most notable sources being [The Beginner's Guide to React by Kent C Dodds](https://egghead.io/courses/the-beginner-s-guide-to-react) and [udemy](https://www.udemy.com/).
+
 
 [logo192]: ./public/logo192.png
 [log-in]: ./public/log-in.png
