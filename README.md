@@ -33,42 +33,33 @@ Filmtrack is a React & Firebase app that uses the TMDB API to track movies and k
 - /movies/upcoming - Show upcoming movies
 - /movies/search - Search for a movie
 - /movies/:id - Show details for a specific movie
-- /tv/popular - Show popular TV shows
-- /tv/top - Show top rated TV shows
+- /tv/popular - Show popular tv shows
+- /tv/top - Show top rated tv shows
 
 ### Views/Pages.
 
-[ For each view in your app, show a screenshot and caption - only new/modified ones in the case of the Movies Fan app. If necessary, use multiple screenshots to cover a view's full capability.
+> Account pages - Login, Register, Reset Password, My Account
 
-e.g.
+![][log-in]
+![][register]
+![][reset]
+![][account]
 
-> Lists movies from the Discover endpoint. Filtering on title and genre attributes is supported.
+> Search movies
 
-![][logo192]
+![][search]
 
-> Shows detailed information on a specific movie
+> Single movie view
 
-![][logo192]
+![][singleview]
 
 ### Component catalogue.
 
-[ Use the Storybook UI to highlight the new components for which you developed stories.]
-e.g.
-
-![][logo192]
+N/A - Storybook broken
 
 ## Caching.
 
-[ List the TMDB server state cached by the app. Include a screenshot(s) of the react-query dev tools to validate your list.]
-
-e.g.
-
-- Discover movies (pagination support)
-- Movie details
-- etc
-- etc
-
-![][logo192]
+Data stored in firebase + using react-persist library to store favourites
 
 ## Authentication.
 
@@ -80,10 +71,18 @@ User favourites are persisted in a firestore database, and are stored a variable
 
 ## Additional features
 
-The site is designed to be used mobile-first, with many of the design elements being able to be compressed down to a smaller screen size.
+loading animation (red bar at top of screen)
+axios for api calls
 
 ## Independent learning
 
 Since I started my new role as an Associate Software Engineer, the stack I am working with is very react-based. I have done lots of independant learning, with the most notable sources being [The Beginner's Guide to React by Kent C Dodds](https://egghead.io/courses/the-beginner-s-guide-to-react) and [udemy](https://www.udemy.com/).
 
+
 [logo192]: ./public/logo192.png
+[log-in]: ./public/log-in.png
+[register]: ./public/register.png
+[reset]: ./public/reset.png
+[account]: ./public/account.png
+[search]: ./public/search.png
+[singleview]: ./public/singleview.png
