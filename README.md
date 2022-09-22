@@ -76,7 +76,7 @@ axios for api calls
 
 ## Independent learning
 
-Since I started my new role as an Associate Software Engineer, the stack I am working with is very react-based. I have done lots of independant learning, with the most notable sources being [The Beginner's Guide to React by Kent C Dodds](https://egghead.io/courses/the-beginner-s-guide-to-react) and [udemy](https://www.udemy.com/).
+Since I started my new role as an Associate Software Developer, the stack I am working with is very react-based. I have done lots of independant learning, with the most notable sources being [The Beginner's Guide to React by Kent C Dodds](https://egghead.io/courses/the-beginner-s-guide-to-react) and [udemy](https://www.udemy.com/).
 
 
 [logo192]: ./public/logo192.png
